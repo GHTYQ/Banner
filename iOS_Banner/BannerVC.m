@@ -21,6 +21,8 @@
     BannerV *bv=[[BannerV alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 300)];
     bv.backgroundColor = [UIColor yellowColor];
     bv.imgArr = @[@"test",@"one",@"two"];
+    bv.pageColor=[UIColor greenColor];
+    bv.currentPageColor=[UIColor redColor];
     [self.view addSubview:bv];
 }
 

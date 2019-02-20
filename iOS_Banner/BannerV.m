@@ -33,12 +33,6 @@
     self.bannerScrollV.showsHorizontalScrollIndicator = NO;
     [self addSubview:self.bannerScrollV];
     self.bannerPageControl = [[UIPageControl alloc]init];
-    if (self.pageColor) {
-        self.bannerPageControl.pageIndicatorTintColor = self.pageColor;
-    }
-    if (self.currentPageColor) {
-        self.bannerPageControl.currentPageIndicatorTintColor =self.currentPageColor;
-    }
     [self addSubview:self.bannerPageControl];
 }
 -(void)chanePage{
@@ -46,7 +40,7 @@
         float offset_X = self.bannerScrollV.contentOffset.x;
         //每次切换一个屏幕
         offset_X += self.width;
-        //说明要从最右边的多余视图开始滚动了，最右边的多余视图实际上就是第一个视图。所以偏移量需要更改为第一个视图的偏移量。
+//        说明要从最右边的多余视图开始滚动了，最右边的多余视图实际上就是第一个视图。所以偏移量需要更改为第一个视图的偏移量。
         if (offset_X > self.width*3) {
             self.bannerScrollV.contentOffset = CGPointMake(0, 0);
         }
@@ -84,6 +78,12 @@
     self.bannerPageControl.frame = CGRectMake(0, self.height-30, self.width, 20);
     self.bannerPageControl.currentPage = 0;
     self.bannerPageControl.numberOfPages = self.imgArr.count;
+    if (self.pageColor) {
+        self.bannerPageControl.pageIndicatorTintColor = self.pageColor;
+    }
+    if (self.currentPageColor) {
+        self.bannerPageControl.currentPageIndicatorTintColor =self.currentPageColor;
+    }
     self.timer = [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(chanePage) userInfo:nil repeats:YES];
 }
 #pragma mark -- 滚动视图的代理方法
